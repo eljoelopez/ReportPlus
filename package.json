@@ -1,0 +1,22 @@
+{
+  "name": "reportplus",
+  "version": "1.0.0",
+  "description": "Report+",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "@google-cloud/vertexai": "^0.5.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3"
+  }
+}
