@@ -11,7 +11,8 @@ const visionModel = 'gemini-1.0-pro-vision'; // needed if you want to use vision
 const vertex_ai = new vertexai_1.VertexAI({ project: project, location: loc });
 // Instantiate models
 exports.generativeModel = vertex_ai.getGenerativeModel({
-    model: textModel,
+    //model: textModel,
+    model: visionModel,
     // The following parameters are optional
     // They can also be passed to individual content generation requests
     safety_settings: [
