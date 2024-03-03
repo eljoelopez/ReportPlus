@@ -1,0 +1,17 @@
+site_name: ReportPlus
+site_url: https://eljoelopez.github.io/ReportPlus
+
+theme:
+  name: mkdocs
+  locale: en
+  highlightjs: true
+
+markdown_extensions:
+  toc:
+    permalink: true
+  admonition: {}
+
+
+nav:
+ - Home: index.md
+ - Report: generated.md
