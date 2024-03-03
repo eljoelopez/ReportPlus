@@ -2,7 +2,7 @@ site_name: ReportPlus
 site_url: https://eljoelopez.github.io/ReportPlus
 
 theme:
-  name: mkdocs
+  name: material
   locale: en
   highlightjs: true
 
