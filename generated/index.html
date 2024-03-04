@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://eljoelopez.github.io/ReportPlus/generated/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Report - ReportPlus</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ReportPlus</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Report</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#a-cool-demo-project" class="nav-link">A cool Demo Project</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#report" class="nav-link">Report</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<pre><code class="language-code">%pip install specklepy
+%pip install pandas
+from specklepy.objects import Base
+from specklepy.api.client import SpeckleClient
+from specklepy.api.wrapper import StreamWrapper
+from specklepy.api.credentials import get_default_account
+from specklepy.transports.server import ServerTransport
+from specklepy.api import operations
+import pandas as pd
+</code></pre>
+<pre><code class="language-code">wrapper = StreamWrapper(&quot;https://speckle.xyz/streams/f8fdca34e8/commits/415b381d6c&quot;)
+client = wrapper.get_client(&quot;743d2df1ec7e610a0a3adb9b2167414542c18ca328&quot;)
+transport = wrapper.get_transport()
+</code></pre>
+<pre><code class="language-code">def get_data_frame(base:Base):
+    id = []
+    name = []
+    volume = []
+    area = []
+
+    for e in base.elements:
+        id.append(e.id)
+        name.append(e.speckleType.split(&quot;.&quot;)[-1])
+        volume.append(e.volume)
+        area.append(e.area)
+
+    data = {
+        &quot;id&quot; : id,
+        &quot;Name&quot; : name,
+        &quot;Volume&quot; : volume,
+        &quot;Area&quot; : area
+    }
+
+    return pd.DataFrame(data=data)
+</code></pre>
+<h1 id="a-cool-demo-project">A cool Demo Project<a class="headerlink" href="#a-cool-demo-project" title="Permanent link">&para;</a></h1>
+<p><strong>Povl Filip Sonne-Frederiksen</strong> <em>(03/02/2024 21:55:50)</em></p>
+<p>LINK Arkitektur</p>
+<p>Welcome to this fancy model.</p>
+<h2 id="report">Report<a class="headerlink" href="#report" title="Permanent link">&para;</a></h2>
+<div id="TwoCol" style="display: flex;">
+<div id="col1" style="flex: 1;">
+<iframe id="iframe"
+src="https://speckle.xyz/embed?stream=f8fdca34e8&commit=415b381d6c&overlay=87b8c5736a&transparent=true&amp;autoload=true&amp;hidecontrols=true&amp;hidesidebar=true"
+width="600" height="400" frameborder="0">
+</iframe>
+</div>
+<div id="col2" style="flex: 1">
+<h4>Content</h4>
+<p> The rendering shows a section through Zaha Hadid's Vitra Fire Station. The building is characterized by its dynamic and fluid forms, which are inspired by the surrounding landscape. The use of concrete and glass creates a striking contrast between the building and its natural surroundings. The building is also notable for its sustainable features, such as its use of natural ventilation and rainwater harvesting.
+
+Zaha Hadid was a British-Iraqi architect who was known for her innovative and visionary designs. She was one of the most influential architects of her generation, and her work has been widely celebrated. The Vitra Fire Station is one of her most iconic works, and it is a testament to her unique talent and vision.
+
+The Vitra Fire Station is located in Weil am Rhein, Germany. It was designed by Zaha Hadid and completed in 1993. The building is part of the Vitra Campus, which is a collection of buildings designed by some of the world's most famous architects. The Vitra Fire Station is a striking and iconic building that has become a popular tourist destination.
+
+The building is made of concrete and glass. It has a dynamic and fluid form that is inspired by the surrounding landscape. The use of concrete and glass creates a striking contrast between the building and its natural surroundings. The building is also notable for its sustainable features, such as its use of natural ventilation and rainwater harvesting.
+
+The Vitra Fire Station is a unique and visionary building that is a testament to Zaha Hadid's talent and creativity. It is a popular tourist destination and a must-see for anyone interested in architecture.
+</p>
+</div>
+</div>
+
+<h3 id="enclosing-bubbles">Enclosing  Bubbles<a class="headerlink" href="#enclosing-bubbles" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=579f5fddca97878e525f2adf11277d9e&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>229.75</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>2442.56</td>
+<td>345.39</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='579f5fddca97878e525f2adf11277d9e', remote_transport=transport))
+</code></pre>
+<h3 id="slabs-and-steps">Slabs And Steps<a class="headerlink" href="#slabs-and-steps" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=cc9cc5550310e8f13819d6964674ebfe&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>416.33</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>415.37</td>
+<td>71.44</td>
+</tr>
+<tr>
+<td>Brep_3</td>
+<td>776.41</td>
+<td>599.30</td>
+</tr>
+<tr>
+<td>Brep_4</td>
+<td>14.07</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_5</td>
+<td>711.87</td>
+<td>120.28</td>
+</tr>
+<tr>
+<td>Brep_6</td>
+<td>36.72</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_7</td>
+<td>8.72</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_8</td>
+<td>143.71</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_9</td>
+<td>250.30</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_10</td>
+<td>80.50</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_11</td>
+<td>31.69</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_12</td>
+<td>1134.37</td>
+<td>169.73</td>
+</tr>
+<tr>
+<td>Brep_13</td>
+<td>1111.62</td>
+<td>159.47</td>
+</tr>
+<tr>
+<td>Brep_14</td>
+<td>246.56</td>
+<td>105.10</td>
+</tr>
+<tr>
+<td>Brep_15</td>
+<td>302.63</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_16</td>
+<td>4.26</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_17</td>
+<td>39.93</td>
+<td>1.83</td>
+</tr>
+<tr>
+<td>Brep_18</td>
+<td>416.73</td>
+<td>58.24</td>
+</tr>
+<tr>
+<td>Brep_19</td>
+<td>1.94</td>
+<td>0.13</td>
+</tr>
+<tr>
+<td>Brep_20</td>
+<td>27.14</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_21</td>
+<td>79.61</td>
+<td>19.91</td>
+</tr>
+<tr>
+<td>Brep_22</td>
+<td>13.79</td>
+<td>0.62</td>
+</tr>
+<tr>
+<td>Brep_23</td>
+<td>13.87</td>
+<td>0.63</td>
+</tr>
+<tr>
+<td>Brep_24</td>
+<td>58.06</td>
+<td>6.86</td>
+</tr>
+<tr>
+<td>Brep_25</td>
+<td>564.11</td>
+<td>101.97</td>
+</tr>
+<tr>
+<td>Brep_26</td>
+<td>287.28</td>
+<td>43.35</td>
+</tr>
+<tr>
+<td>Brep_27</td>
+<td>35.11</td>
+<td>4.67</td>
+</tr>
+<tr>
+<td>Brep_28</td>
+<td>801.59</td>
+<td>161.61</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='cc9cc5550310e8f13819d6964674ebfe', remote_transport=transport))
+</code></pre>
+<h3 id="structural-columns">Structural Columns<a class="headerlink" href="#structural-columns" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=84b8986d1e931136de2cfbd085375158&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_3</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_4</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_5</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_6</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_7</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_8</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_9</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_10</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_11</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>Brep_12</td>
+<td>55.74</td>
+<td>2.23</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='84b8986d1e931136de2cfbd085375158', remote_transport=transport))
+</code></pre>
+<h3 id="building-base">Building Base<a class="headerlink" href="#building-base" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=fe7b8733254f25544e5d3b674f26846e&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>1814.98</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>363.99</td>
+<td>50.57</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='fe7b8733254f25544e5d3b674f26846e', remote_transport=transport))
+</code></pre>
+<h3 id="escalators">Escalators<a class="headerlink" href="#escalators" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=0faa4efb5f3890661972a46c0c2713b4&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>93.26</td>
+<td>29.48</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>30.23</td>
+<td>1.37</td>
+</tr>
+<tr>
+<td>Brep_3</td>
+<td>30.23</td>
+<td>1.37</td>
+</tr>
+<tr>
+<td>Brep_4</td>
+<td>30.23</td>
+<td>1.37</td>
+</tr>
+<tr>
+<td>Brep_5</td>
+<td>30.23</td>
+<td>1.37</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='0faa4efb5f3890661972a46c0c2713b4', remote_transport=transport))
+</code></pre>
+<h3 id="railings">Railings<a class="headerlink" href="#railings" title="Permanent link">&para;</a></h3>
+<iframe src="https://speckle.xyz/embed?stream=f8fdca34e8&object=968b2ad2937bcfdcbd140dd54122c042&transparent=true&autoload=true&hidecontrols=true&hidesidebar=true" width="600" height="400"frameborder="0"></iframe>
+
+<table>
+<thead>
+<tr>
+<th>speckleType</th>
+<th>area</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brep_1</td>
+<td>51.96</td>
+<td>1.25</td>
+</tr>
+<tr>
+<td>Brep_2</td>
+<td>30.41</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Brep_3</td>
+<td>49.61</td>
+<td>1.20</td>
+</tr>
+<tr>
+<td>Brep_4</td>
+<td>46.74</td>
+<td>2.15</td>
+</tr>
+<tr>
+<td>Brep_5</td>
+<td>58.50</td>
+<td>2.64</td>
+</tr>
+<tr>
+<td>Brep_6</td>
+<td>7.29</td>
+<td>0.32</td>
+</tr>
+<tr>
+<td>Brep_7</td>
+<td>57.34</td>
+<td>2.57</td>
+</tr>
+<tr>
+<td>Brep_8</td>
+<td>32.88</td>
+<td>1.48</td>
+</tr>
+<tr>
+<td>Brep_9</td>
+<td>28.00</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>Brep_10</td>
+<td>10.75</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>Brep_11</td>
+<td>60.47</td>
+<td>2.79</td>
+</tr>
+<tr>
+<td>Brep_12</td>
+<td>38.21</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>Brep_13</td>
+<td>133.79</td>
+<td>6.06</td>
+</tr>
+<tr>
+<td>Brep_14</td>
+<td>46.73</td>
+<td>2.13</td>
+</tr>
+<tr>
+<td>Brep_15</td>
+<td>45.72</td>
+<td>2.09</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-code">get_data_frame(operations.receive(obj_id='968b2ad2937bcfdcbd140dd54122c042', remote_transport=transport))
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
