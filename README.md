@@ -6,3 +6,4 @@ Report+ is a web tool with Jupyter Notebooks and Pandoc which you can feed with 
 
 Slides here: https://docs.google.com/presentation/d/1Pb5nRFk1uyNAYX_BDwvGUeE2_1Hz0POcT9w9erm-H20/edit?usp=sharing
 
+Example deployed: https://eljoelopez.github.io/ReportPlus/generated/
